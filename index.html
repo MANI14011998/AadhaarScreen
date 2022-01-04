@@ -81,6 +81,7 @@
         </div>
         <div id="aadhaar-input">
                 <input placeholder="0000 0000 0000" id="aadhaar-input-box" type="tel" maxlength="14" onpaste="return false" onkeypress="return keyPressEvent(event)"/>
+            <button onclick="validateAadhaar()">Submit</button>
         </div>
         <div id="aadhaar-sub-text">
             UIDAI will send an OTP to your Aadhaar linked mobile number
@@ -113,6 +114,9 @@
             } else {
                 if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.handler) {
                     window.webkit.messageHandlers.handler.postMessage("aadhaarErrorOccured");
+                }
+                if (window.androidJSInterface ) {
+                    document.getElementById("aadhaar-label").innerText = window.androidJSInterface.aadhaarErrorText();
                 }
                 inputBox.classList.remove("success");
                 inputBox.classList.add("error");
