@@ -111,7 +111,9 @@
                 inputBox.classList.remove("error");
                 inputBox.classList.add("success");
             } else {
-                window.webkit.messageHandlers.handler.postMessage("aadhaarErrorOccured");
+                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.handler) {
+                    window.webkit.messageHandlers.handler.postMessage("aadhaarErrorOccured");
+                }
                 inputBox.classList.remove("success");
                 inputBox.classList.add("error");
             }
